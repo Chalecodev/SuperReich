@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Behaivours\" />
-    <Folder Include="Mappings\" />
   </ItemGroup>
 
   <ItemGroup>

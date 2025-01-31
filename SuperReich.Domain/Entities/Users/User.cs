@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SuperReich.Domain.Common;
+using SuperReich.Domain.Entities.Roles;
 
 namespace SuperReich.Domain.Entities.Users
 {
@@ -15,5 +16,8 @@ namespace SuperReich.Domain.Entities.Users
         public string PhoneNumber { get; set; } = string.Empty;
         public DateTime Birthdate { get; set; }
         public string Address { get; set; } = string.Empty;
+
+        public int RoleId { get; set; }
+        public Role? Roles { get; set; }
     }
 }

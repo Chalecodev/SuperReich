@@ -1,17 +1,17 @@
-﻿using MediatR;
+﻿using SuperReich.Domain.Common;
 
-namespace SuperReich.Application.Features.Users.Commands
+namespace SuperReich.Application.DTOs.Users
 {
-    public class CreateUserCommand: IRequest<int>
+    public class UserDto: Audit
     {
+        public int Id { get; set; }
         public string Rut { get; set; } = string.Empty;
         public string Names { get; set; } = string.Empty;
         public string Surnames { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public DateTime Birthdate { get; set; }
         public string Address { get; set; } = string.Empty;
-        public int RoleId { get; set; }
+        public string RoleName { get; set; } = string.Empty;
     }
 }

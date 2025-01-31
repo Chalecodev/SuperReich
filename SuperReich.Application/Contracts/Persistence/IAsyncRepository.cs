@@ -6,5 +6,8 @@ namespace SuperReich.Application.Contracts.Persistence
     {
         Task<T> GetBy(int id);
         Task<IReadOnlyList<T>> GetAllAsync();
+        Task<T> AddAsync(T entity);
+        Task<T> UpdateAsync(T entity);
+        Task DeleteAsync(int id);
     }
 }

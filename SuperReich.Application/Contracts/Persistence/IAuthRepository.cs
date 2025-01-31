@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SuperReich.Application.DTOs.Auth.Login;
+using SuperReich.Application.Features.Auth.Commands;
+using SuperReich.Domain.Entities.Users;
 
 namespace SuperReich.Application.Contracts.Persistence
 {
     public interface IAuthRepository
     {
+        Task<LoginResponse>? Login(LoginCommand request);
+        Task<User>? Register(User request);
     }
 }

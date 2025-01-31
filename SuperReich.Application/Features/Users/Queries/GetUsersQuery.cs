@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SuperReich.Domain.Entities.Users;
+using SuperReich.Application.DTOs.Users;
 
 namespace SuperReich.Application.Features.Users.Queries
 {
-    public class GetUsersQuery: IRequest<IReadOnlyList<User>>;
+    public class GetUsersQuery: IRequest<IReadOnlyList<UserDto>>;
 }
