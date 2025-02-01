@@ -9,9 +9,14 @@
   <ItemGroup>
     <Folder Include="Behaivours\" />
     <Folder Include="Features\Clients\" />
-    <Folder Include="Features\Rooms\" />
+    <Folder Include="Features\Rooms\Commands\CreateRoom\" />
+    <Folder Include="Features\Rooms\Commands\DeleteRoom\" />
+    <Folder Include="Features\Rooms\Commands\UpdateRoom\" />
+    <Folder Include="Features\Rooms\Queries\GetAllRooms\" />
+    <Folder Include="Features\Rooms\Queries\GetByIdRoom\" />
     <Folder Include="Features\Users\Commands\DeleteUser\" />
     <Folder Include="Features\Users\Commands\UpdateUser\" />
+    <Folder Include="Features\Users\Queries\GetByRutUser\" />
   </ItemGroup>
 
   <ItemGroup>

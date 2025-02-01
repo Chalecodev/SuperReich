@@ -6,7 +6,7 @@ namespace SuperReich.Domain.Entities.Clients
     public class Client: Audit
     {
         [Key]
-        public int Id { get; set; }
+        public int ClientId { get; set; }
         public string Rut { get; set; } = string.Empty;
         public string Names { get; set; } = string.Empty;
         public string Surnames { get; set; } = string.Empty;
@@ -15,5 +15,6 @@ namespace SuperReich.Domain.Entities.Clients
         public string PhoneNumber { get; set; } = string.Empty;
         public DateTime Birthdate { get; set; }
         public string Address { get; set; } = string.Empty;
+        public string Note { get; set; } = string.Empty;
     }
 }

@@ -4,9 +4,9 @@ using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Application.DTOs.Users;
 using SuperReich.Domain.Entities.Users;
 
-namespace SuperReich.Application.Features.Users.Queries
+namespace SuperReich.Application.Features.Users.Queries.GetAllUsers
 {
-    public class GetUsersQueryHandler: IRequestHandler<GetUsersQuery, IReadOnlyList<UserDto>>
+    public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, IReadOnlyList<UserDto>>
     {
         private readonly IAsyncRepository<User> _repository;
         private readonly IMapper _mapper;

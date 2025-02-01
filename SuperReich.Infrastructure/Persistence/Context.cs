@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Domain.Common;
+using SuperReich.Domain.Entities.Clients;
 using SuperReich.Domain.Entities.Roles;
+using SuperReich.Domain.Entities.Rooms;
 using SuperReich.Domain.Entities.Users;
 
 namespace SuperReich.Infrastructure.Persistence
@@ -42,6 +44,9 @@ namespace SuperReich.Infrastructure.Persistence
 
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
-        //public DbSet<Client> Clients { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<RoomCategory> RoomCategories { get; set; }
+        public DbSet<RoomPrice> RoomPrices{ get; set; }
+        public DbSet<Room> Rooms{ get; set; }
     }
 }

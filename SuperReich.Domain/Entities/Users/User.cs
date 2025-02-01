@@ -7,7 +7,7 @@ namespace SuperReich.Domain.Entities.Users
     public class User : Audit
     {
         [Key]
-        public int Id { get; set; }
+        public int UserId { get; set; }
         public string Rut { get; set; } = string.Empty;
         public string Names { get; set; } = string.Empty;
         public string Surnames { get; set; } = string.Empty;

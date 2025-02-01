@@ -38,7 +38,7 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
             };
 
             var result = await _repository.AddAsync(user);
-            return result.Id;
+            return result.UserId;
         }
     }
 }
