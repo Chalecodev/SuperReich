@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Behaivours\" />
+    <Folder Include="Features\Clients\" />
+    <Folder Include="Features\Rooms\" />
+    <Folder Include="Features\Users\Commands\DeleteUser\" />
+    <Folder Include="Features\Users\Commands\UpdateUser\" />
   </ItemGroup>
 
   <ItemGroup>

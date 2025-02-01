@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace SuperReich.Application.Features.Users.Commands
+namespace SuperReich.Application.Features.Users.Commands.CreateUser
 {
-    public class CreateUserCommand: IRequest<int>
+    public class CreateUserCommand : IRequest<int>
     {
         public string Rut { get; set; } = string.Empty;
         public string Names { get; set; } = string.Empty;

@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SuperReich.API.Errors;
-using SuperReich.Application.Features.Users.Commands;
+using SuperReich.Application.Features.Users.Commands.CreateUser;
 using SuperReich.Application.Features.Users.Queries;
 using SuperReich.Domain.Entities.Users;
 

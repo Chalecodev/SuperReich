@@ -3,7 +3,7 @@ using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Domain.Entities.Users;
 using SuperReich.Domain.ValueObjects;
 
-namespace SuperReich.Application.Features.Users.Commands
+namespace SuperReich.Application.Features.Users.Commands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
     {
