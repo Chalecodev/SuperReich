@@ -6,18 +6,11 @@ using SuperReich.Application.Exceptions;
 
 namespace SuperReich.API.Middleware
 {
-    public class ExceptionMiddleware
+    public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostEnvironment env)
     {
-        private readonly RequestDelegate _next;
-        private readonly ILogger<ExceptionMiddleware> _logger;
-        private readonly IHostEnvironment _env;
-
-        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostEnvironment env)
-        {
-            _next = next;
-            _logger = logger;
-            _env = env;
-        }
+        private readonly RequestDelegate _next = next;
+        private readonly ILogger<ExceptionMiddleware> _logger = logger;
+        private readonly IHostEnvironment _env = env;
 
         public async Task InvokeAsync(HttpContext context)
         {
@@ -38,23 +31,19 @@ namespace SuperReich.API.Middleware
                         statusCode = (int)HttpStatusCode.NotFound;
                         result = CreateErrorResponse(ex, statusCode);
                         break;
-
                     case ValidationException validationException:
                         statusCode = (int)HttpStatusCode.BadRequest;
                         var validationDetails = JsonConvert.SerializeObject(validationException.Errors);
                         result = CreateErrorResponse(ex, statusCode, validationDetails);
                         break;
-
                     case BadRequestException:
                         statusCode = (int)HttpStatusCode.BadRequest;
                         result = CreateErrorResponse(ex, statusCode);
                         break;
-
                     case UnauthorizedAccessException:
                         statusCode = (int)HttpStatusCode.Unauthorized;
                         result = CreateErrorResponse(ex, statusCode);
                         break;
-
                     default:
                         result = CreateErrorResponse(ex, statusCode, ex.StackTrace);
                         break;

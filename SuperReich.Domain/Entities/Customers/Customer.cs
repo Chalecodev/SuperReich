@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SuperReich.Domain.Common;
 
-namespace SuperReich.Domain.Entities.Clients
+namespace SuperReich.Domain.Entities.Customers
 {
-    public class Client: Audit
+    public class Customer: Audit
     {
         [Key]
-        public int ClientId { get; set; }
+        public int CustomerId { get; set; }
         public string Rut { get; set; } = string.Empty;
         public string Names { get; set; } = string.Empty;
         public string Surnames { get; set; } = string.Empty;

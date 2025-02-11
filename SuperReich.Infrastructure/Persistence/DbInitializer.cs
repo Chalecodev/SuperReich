@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SuperReich.Domain.Entities.Roles;
+using SuperReich.Domain.Entities.RoomCategories;
+using SuperReich.Domain.Entities.RoomPrices;
+using SuperReich.Domain.Entities.Rooms;
 using SuperReich.Domain.Entities.Users;
 using SuperReich.Domain.ValueObjects;
 using static SuperReich.Infrastructure.Services.Encryptor;
@@ -51,6 +54,53 @@ public class DbInitializer
                 Address = "xxxxxxxxxxxxxxx",
                 PhoneNumber = "+xxxxxxxxxx",
                 RoleId = 1,
+                CreatedBy = "Chaleco",
+                CreatedDate = DateTime.Now,
+                LastModifiedBy = null,
+                LastModifiedDate = null,
+                IsDeleted = false
+            });
+        }
+
+        if (!await context.RoomPrices.AnyAsync())
+        {
+            await context.RoomPrices.AddAsync(new RoomPrice()
+            {
+                //Base, Descuento, Promoción, Alta Demanda
+                Price = 20000,
+                PriceType = "Base",
+                Season = "Verano",
+                CreatedBy = "Chaleco",
+                CreatedDate = DateTime.Now,
+                LastModifiedBy = null,
+                LastModifiedDate = null,
+                IsDeleted = false
+            });
+        }
+
+        if (!await context.RoomCategories.AnyAsync())
+        {
+            await context.RoomCategories.AddAsync(new RoomCategory()
+            {
+                Description = "Matrimonial",
+                CreatedBy = "Chaleco",
+                RoomPriceId = 1,
+                CreatedDate = DateTime.Now,
+                LastModifiedBy = null,
+                LastModifiedDate = null,
+                IsDeleted = false
+            });
+        }
+
+        if (!await context.Rooms.AnyAsync())
+        {
+            await context.Rooms.AddAsync(new Room()
+            {
+                Description = "XXXXXXXXXXXXXXXXXXX",
+                Capacity = 4,
+                NumberRoom = 1,
+                RoomCategoryId = 1,
+                Status = "Disponible",
                 CreatedBy = "Chaleco",
                 CreatedDate = DateTime.Now,
                 LastModifiedBy = null,

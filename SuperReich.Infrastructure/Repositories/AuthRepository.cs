@@ -10,16 +10,10 @@ using static SuperReich.Infrastructure.Services.Encryptor;
 
 namespace SuperReich.Infrastructure.Repositories
 {
-    public class AuthRepository: IAuthRepository
+    public class AuthRepository(Context context, JwtTokenService jwtTokenService) : IAuthRepository
     {
-        private readonly Context _context;
-        private readonly JwtTokenService _jwtTokenService;
-
-        public AuthRepository(Context context, JwtTokenService jwtTokenService)
-        {
-            _context = context;
-            _jwtTokenService = jwtTokenService;
-        }
+        private readonly Context _context = context;
+        private readonly JwtTokenService _jwtTokenService = jwtTokenService;
 
         public async Task<LoginResponse>? Login(LoginCommand request)
         {

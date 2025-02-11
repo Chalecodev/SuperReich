@@ -7,13 +7,9 @@ using SuperReich.Domain.Entities.Users;
 
 namespace SuperReich.Infrastructure.Services
 {
-    public class JwtTokenService
+    public class JwtTokenService(IConfiguration configuration)
     {
-        private readonly IConfiguration _configuration;
-        public JwtTokenService(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        private readonly IConfiguration _configuration = configuration;
 
         public async Task<JwtSecurityToken> GenerateToken(User user)
         {

@@ -1,27 +1,23 @@
 ﻿using System.Net;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SuperReich.API.Errors;
 using SuperReich.Application.Features.Users.Commands.CreateUser;
-using SuperReich.Application.Features.Users.Queries.GetAllUsers;
+using SuperReich.Application.Features.Users.Queries.GetUsers;
 using SuperReich.Domain.Entities.Users;
+using SuperReich.Domain.Enums.RoleEnums;
 
 namespace SuperReich.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController(ISender sender) : ControllerBase
     {
-        private readonly ISender _sender;
-        public UserController(ISender sender)
-        {
-            _sender = sender;
-        }
+        private readonly ISender _sender = sender;
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("GetUsers")]
         [ProducesResponseType(typeof(IReadOnlyList<User>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(CodeErrorResponse), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(CodeErrorResponse), (int)HttpStatusCode.InternalServerError)]
         public async Task<ActionResult<IReadOnlyList<User>>> GetUsers()
         {
             var query = new GetUsersQuery();

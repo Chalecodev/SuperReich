@@ -1,8 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Domain.Common;
-using SuperReich.Domain.Entities.Clients;
+using SuperReich.Domain.Entities.Bookings;
+using SuperReich.Domain.Entities.Customers;
+using SuperReich.Domain.Entities.Products;
 using SuperReich.Domain.Entities.Roles;
+using SuperReich.Domain.Entities.RoomCategories;
+using SuperReich.Domain.Entities.RoomPrices;
 using SuperReich.Domain.Entities.Rooms;
 using SuperReich.Domain.Entities.Users;
 
@@ -11,7 +15,7 @@ namespace SuperReich.Infrastructure.Persistence
     public class Context : DbContext
     {
         private readonly IDateTimeChile _dateTimeChile;
-        public Context(DbContextOptions<Context> options, IDateTimeChile dateTime) : base(options) 
+        public Context(DbContextOptions<Context> options, IDateTimeChile dateTime) : base(options)
         {
             _dateTimeChile = dateTime;
         }
@@ -42,11 +46,14 @@ namespace SuperReich.Infrastructure.Persistence
             return base.SaveChangesAsync(cancellationToken);
         }
 
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<RoomCategory> RoomCategories { get; set; }
-        public DbSet<RoomPrice> RoomPrices{ get; set; }
-        public DbSet<Room> Rooms{ get; set; }
+        public DbSet<RoomPrice> RoomPrices { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Room> Rooms { get; set; }
     }
 }

@@ -6,13 +6,9 @@ namespace SuperReich.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthsController(ISender sender) : ControllerBase
     {
-        private readonly ISender _sender;
-        public AuthController(ISender sender)
-        {
-            _sender = sender;
-        }
+        private readonly ISender _sender = sender;
 
         [HttpPost("Login")]
         public async Task<ActionResult<LoginCommand>> Login(LoginCommand request)

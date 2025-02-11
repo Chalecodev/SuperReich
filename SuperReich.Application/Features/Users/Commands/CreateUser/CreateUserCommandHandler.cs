@@ -5,15 +5,10 @@ using SuperReich.Domain.ValueObjects;
 
 namespace SuperReich.Application.Features.Users.Commands.CreateUser
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
+    public class CreateUserCommandHandler(IAsyncRepository<User> repository, IDateTimeChile dateTimeChile) : IRequestHandler<CreateUserCommand, int>
     {
-        private readonly IAsyncRepository<User> _repository;
-        private readonly IDateTimeChile _dateTimeChile;
-        public CreateUserCommandHandler(IAsyncRepository<User> repository, IDateTimeChile dateTimeChile)
-        {
-            _repository = repository;
-            _dateTimeChile = dateTimeChile;
-        }
+        private readonly IAsyncRepository<User> _repository = repository;
+        private readonly IDateTimeChile _dateTimeChile = dateTimeChile;
 
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
@@ -31,14 +26,12 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
                 Address = request.Address,
                 RoleId = request.RoleId,
                 CreatedBy = "Chaleco",
-                CreatedDate = _dateTimeChile.GetCurrentChileTime(),
                 LastModifiedBy = null,
-                LastModifiedDate = null,
                 IsDeleted = false
             };
 
-            var result = await _repository.AddAsync(user);
-            return result.UserId;
+            var response = await _repository.AddAsync(user);
+            return response.UserId;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SuperReich.Domain.Common;
-using SuperReich.Domain.Enums.RoomEnums;
+using SuperReich.Domain.Entities.RoomCategories;
 
 namespace SuperReich.Domain.Entities.Rooms
 {
@@ -10,10 +10,8 @@ namespace SuperReich.Domain.Entities.Rooms
         public int RoomId { get; set; }
         public string Description { get; set; } = string.Empty;
         public int Capacity { get; set; }
-        public RoomStatusEnum Status { get; set; }  // Estado de la habitación
-
-        public int RoomPriceId { get; set; }
-        public RoomPrice? RoomPrices { get; set; }
+        public int NumberRoom { get; set; }
+        public string Status { get; set; } = string.Empty;
 
         public int RoomCategoryId { get; set; }
         public RoomCategory? RoomCategories { get; set; }
