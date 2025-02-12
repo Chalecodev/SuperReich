@@ -51,9 +51,9 @@ namespace SuperReich.Infrastructure.Persistence
         public DbSet<User> Users { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<CategoryPrice> CategoryPrices { get; set; }
         public DbSet<RoomCategory> RoomCategories { get; set; }
-        public DbSet<RoomPrice> RoomPrices { get; set; }
-        public DbSet<Booking> Bookings { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace SuperReich.API.Controllers
     {
         private readonly ISender _sender = sender;
 
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         [HttpGet("GetUsers")]
         [ProducesResponseType(typeof(IReadOnlyList<User>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IReadOnlyList<User>>> GetUsers()

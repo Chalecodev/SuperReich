@@ -15,8 +15,11 @@ namespace SuperReich.Application.Features.Rooms.Commands.CreateRoom
                 Description = request.Description,
                 Capacity = request.Capacity,
                 Status = request.Status,
-                RoomPriceId = request.RoomPriceId,
-                RoomCategoryId = request.RoomCategoryId
+                NumberRoom = request.NumberRoom,
+                RoomCategoryId = request.RoomCategoryId,
+                CreatedBy = "Chaleco",
+                LastModifiedBy = null,
+                IsDeleted = false
             };
 
             var result = await _repository.AddAsync(room);

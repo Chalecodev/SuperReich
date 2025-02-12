@@ -9,7 +9,8 @@ namespace SuperReich.Domain.Entities.RoomCategories
         [Key]
         public int RoomCategoryId { get; set; }
         public string Description { get; set; } = string.Empty;
-        public int RoomPriceId { get; set; }
-        public RoomPrice? RoomPrices { get; set; }
+
+        public int CategoryPriceId { get; set; }
+        public CategoryPrice? CategoryPrices { get; set; }
     }
 }

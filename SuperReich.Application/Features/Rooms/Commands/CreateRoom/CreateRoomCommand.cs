@@ -6,8 +6,8 @@ namespace SuperReich.Application.Features.Rooms.Commands.CreateRoom
     {
         public string Description { get; set; } = string.Empty;
         public int Capacity { get; set; }
+        public int NumberRoom { get; set; }
         public string Status { get; set; } = string.Empty;
-        public int RoomPriceId { get; set; }
         public int RoomCategoryId { get; set; }
     }
 }

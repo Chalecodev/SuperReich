@@ -1,11 +1,12 @@
-﻿using SuperReich.Domain.Entities.Users;
+﻿using System.ComponentModel.DataAnnotations;
+using SuperReich.Domain.Common;
 
 namespace SuperReich.Domain.Entities.Roles
 {
-    public class Role
+    public class Role: Audit
     {
+        [Key]
         public int RoleId { get; private set; }
         public string Rolename { get; set; } = string.Empty;
-        public ICollection<User> Users { get; set; } = new List<User>();
     }
 }

@@ -30,6 +30,7 @@ public class DbInitializer
 
     private static async Task Seed(Context context)
     {
+
         if (!await context.Roles.AnyAsync())
         {
             await context.Roles.AddAsync(new Role() { Rolename = "Administrador" });
@@ -62,11 +63,11 @@ public class DbInitializer
             });
         }
 
-        if (!await context.RoomPrices.AnyAsync())
+        if (!await context.CategoryPrices.AnyAsync())
         {
-            await context.RoomPrices.AddAsync(new RoomPrice()
+            //Base, Descuento, Promoción, Alta Demanda
+            await context.CategoryPrices.AddAsync(new CategoryPrice()
             {
-                //Base, Descuento, Promoción, Alta Demanda
                 Price = 20000,
                 PriceType = "Base",
                 Season = "Verano",
@@ -83,8 +84,8 @@ public class DbInitializer
             await context.RoomCategories.AddAsync(new RoomCategory()
             {
                 Description = "Matrimonial",
+                CategoryPriceId = 1,
                 CreatedBy = "Chaleco",
-                RoomPriceId = 1,
                 CreatedDate = DateTime.Now,
                 LastModifiedBy = null,
                 LastModifiedDate = null,

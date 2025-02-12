@@ -2,9 +2,7 @@
 using MediatR;
 using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Application.DTOs.Rooms;
-using SuperReich.Application.DTOs.Users;
 using SuperReich.Domain.Entities.Rooms;
-using SuperReich.Domain.Entities.Users;
 
 namespace SuperReich.Application.Features.Rooms.Queries.GetRooms
 {
