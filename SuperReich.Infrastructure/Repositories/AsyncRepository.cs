@@ -8,7 +8,17 @@ namespace SuperReich.Infrastructure.Repositories
     public class AsyncRepository<T>(Context context) : IAsyncRepository<T> where T : class
     {
         private readonly Context _context = context;
-  
+
+        public async Task<IReadOnlyList<T>> GetFilteredAsync(Expression<Func<T, bool>> filter = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            return await query.ToListAsync();
+        }
+
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
@@ -38,11 +48,6 @@ namespace SuperReich.Infrastructure.Repositories
             return await query.ToListAsync();
         }
 
-        public Task<T> GetBy(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<T> AddAsync(T entity)
         {
             _context.Set<T>().Add(entity);
@@ -50,12 +55,12 @@ namespace SuperReich.Infrastructure.Repositories
             return entity;
         }
 
-        public Task DeleteAsync(int id)
+        public Task<T> UpdateAsync(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<T> UpdateAsync(T entity)
+        public Task DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
