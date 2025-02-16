@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using SuperReich.Application.Contracts.Persistence;
-using SuperReich.Application.Helper;
 
 namespace SuperReich.Application.Features.DynamicFilters.GetByFilter
 {
