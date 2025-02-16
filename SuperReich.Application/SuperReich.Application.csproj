@@ -11,8 +11,6 @@
     <Folder Include="Features\Bookings\" />
     <Folder Include="Features\Customers\Commands\DeleteCustomer\" />
     <Folder Include="Features\Customers\Commands\UpdateCustomer\" />
-    <Folder Include="Features\Customers\Queries\GetByRutCustomer\" />
-    <Folder Include="Features\Customers\Queries\GetCustomers\" />
     <Folder Include="Features\RoomCategories\" />
     <Folder Include="Features\CategoryPrices\" />
     <Folder Include="Features\Rooms\Commands\DeleteRoom\" />

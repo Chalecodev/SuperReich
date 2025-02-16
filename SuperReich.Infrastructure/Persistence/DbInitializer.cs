@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SuperReich.Domain.Entities.Customers;
 using SuperReich.Domain.Entities.Roles;
 using SuperReich.Domain.Entities.RoomCategories;
 using SuperReich.Domain.Entities.RoomPrices;
@@ -11,12 +12,6 @@ namespace SuperReich.Infrastructure.Persistence;
 
 public class DbInitializer
 {
-    //private static IDateTimeChile _dateTimeChile;
-    //public DbInitializer(IDateTimeChile dateTimeChile)
-    //{
-    //    _dateTimeChile = dateTimeChile;
-    //}
-
     public static async Task Initialize(Context context)
     {
         if (true)
@@ -110,6 +105,29 @@ public class DbInitializer
             });
         }
 
-        await context.SaveChangesAsync();
+        if (!await context.Customers.AnyAsync())
+        {
+            await context.Customers.AddAsync(new Customer()
+            {
+                Rut = new RUT("20889157-K").Value,
+                Passport = "",
+                Names = "xxxxx xxxxx",
+                Surnames = "xxxxx xxxxx",
+                Email = "",
+                Nacionalidad = "Chilena",
+                PhoneNumber = "+xxxxxxxxxx",
+                Birthdate = DateTime.Parse("09-11-2001"),
+                Address = "xxxxxxxxxxxxxxx",
+                Note = "xxxxxxxxxxxxxxx",
+                BlackList = false,
+                CreatedBy = "Chaleco",
+                CreatedDate = DateTime.Now,
+                LastModifiedBy = null,
+                LastModifiedDate = null,
+                IsDeleted = false
+            });
+
+            await context.SaveChangesAsync();
+        }
     }
 }
