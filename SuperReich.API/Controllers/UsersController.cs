@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SuperReich.Application.Features.Users.Commands.CreateUser;
+using SuperReich.Application.Features.Users.Commands.UpdateUser;
 using SuperReich.Application.Features.Users.Queries.GetUsers;
 using SuperReich.Domain.Entities.Users;
 
@@ -24,7 +25,15 @@ namespace SuperReich.API.Controllers
         }
 
         [HttpPost("CreateUser")]
-        public async Task<ActionResult<int>> CreateStreamer([FromBody] CreateUserCommand command)
+        [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<int>> CreateUser([FromBody] CreateUserCommand command)
+        {
+            return await _sender.Send(command);
+        }
+
+        [HttpPut("UpdateUser")]
+        [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<int>> UpdateUser([FromBody] UpdateUserCommand command)
         {
             return await _sender.Send(command);
         }

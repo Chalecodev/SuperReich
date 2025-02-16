@@ -18,6 +18,7 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
             {
                 Rut = new RUT(request.Rut).Value,
                 Names = request.Names,
+                Passport = request.Passport,
                 Surnames = request.Surnames,
                 Email = request.Email,
                 Password = request.Password,
@@ -27,7 +28,7 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
                 RoleId = request.RoleId,
                 CreatedBy = "Chaleco",
                 LastModifiedBy = null,
-                IsDeleted = false
+                IsDeleted = request.IsDeleted
             };
 
             var response = await _repository.AddAsync(user);

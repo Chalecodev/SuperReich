@@ -1,11 +1,8 @@
-﻿using MediatR;
-using System.Net;
-using Microsoft.AspNetCore.Http;
+﻿using System.Net;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SuperReich.Application.Features.Rooms.Queries.GetRooms;
-using SuperReich.Domain.Entities.Rooms;
-using SuperReich.Domain.Entities.Customers;
 using SuperReich.Application.Features.Customers.Queries.GetCustomers;
+using SuperReich.Domain.Entities.Customers;
 
 namespace SuperReich.API.Controllers
 {

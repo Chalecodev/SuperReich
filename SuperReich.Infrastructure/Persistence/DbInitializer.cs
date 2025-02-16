@@ -42,6 +42,7 @@ public class DbInitializer
             await context.Users.AddAsync(new User()
             {
                 Rut = new RUT("20889157-K").Value,
+                Passport = "xxxxx",
                 Names = "xxxxx xxxxx",
                 Surnames = "xxxxx xxxxx",
                 Email = "xxxxx.xxxxx@xxx.com",

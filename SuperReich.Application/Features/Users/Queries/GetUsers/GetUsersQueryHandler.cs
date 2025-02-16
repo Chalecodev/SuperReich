@@ -18,6 +18,7 @@ namespace SuperReich.Application.Features.Users.Queries.GetUsers
             {
                 UserId = user.UserId,
                 Rut = user.Rut,
+                Passport = user.Passport,
                 Names = user.Names,
                 Surnames = user.Surnames,
                 Email = user.Email,

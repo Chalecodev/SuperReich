@@ -1,9 +1,10 @@
 ﻿using MediatR;
 
-namespace SuperReich.Application.Features.Users.Commands.CreateUser
+namespace SuperReich.Application.Features.Users.Commands.UpdateUser
 {
-    public class CreateUserCommand : IRequest<int>
+    public class UpdateUserCommand: IRequest<int>
     {
+        public int UserId { get; set; }
         public string Rut { get; set; } = string.Empty;
         public string Passport { get; set; } = string.Empty;
         public string Names { get; set; } = string.Empty;
@@ -13,7 +14,7 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
         public string PhoneNumber { get; set; } = string.Empty;
         public DateTime Birthdate { get; set; }
         public string Address { get; set; } = string.Empty;
-        public int RoleId { get; set; }
+        public int? RoleId { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

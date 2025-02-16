@@ -16,7 +16,6 @@
     <Folder Include="Features\Rooms\Commands\DeleteRoom\" />
     <Folder Include="Features\Rooms\Commands\UpdateRoom\" />
     <Folder Include="Features\Users\Commands\DeleteUser\" />
-    <Folder Include="Features\Users\Commands\UpdateUser\" />
     <Folder Include="Helper\" />
   </ItemGroup>
 

@@ -4,6 +4,7 @@ namespace SuperReich.Application.Contracts.Persistence
 {
     public interface IAsyncRepository<T> where T : class
     {
+        Task<T> GetByIdAsync(Expression<Func<T, bool>> predicate);
         Task<IReadOnlyList<T>> GetFilteredAsync(Expression<Func<T, bool>> filter = null);
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<IReadOnlyList<T>> GetAllAsync(params Expression<Func<T, object>>[] includes);

@@ -9,6 +9,12 @@ namespace SuperReich.Infrastructure.Repositories
     {
         private readonly Context _context = context;
 
+        public async Task<T> GetByIdAsync(Expression<Func<T, bool>> predicate)
+        {
+            var result = await _context.Set<T>().FirstOrDefaultAsync(predicate);
+            return result ?? throw new KeyNotFoundException($"Entidad no encontrada con la condición especificada.");
+        }
+
         public async Task<IReadOnlyList<T>> GetFilteredAsync(Expression<Func<T, bool>> filter = null)
         {
             IQueryable<T> query = _context.Set<T>();
@@ -55,9 +61,13 @@ namespace SuperReich.Infrastructure.Repositories
             return entity;
         }
 
-        public Task<T> UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return entity;
         }
 
         public Task DeleteAsync(int id)

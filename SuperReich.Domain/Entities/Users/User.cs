@@ -9,6 +9,7 @@ namespace SuperReich.Domain.Entities.Users
         [Key]
         public int UserId { get; set; }
         public string Rut { get; set; } = string.Empty;
+        public string Passport { get; set; } = string.Empty;
         public string Names { get; set; } = string.Empty;
         public string Surnames { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
@@ -17,7 +18,7 @@ namespace SuperReich.Domain.Entities.Users
         public DateTime Birthdate { get; set; }
         public string Address { get; set; } = string.Empty;
 
-        public int RoleId { get; set; }
+        public int? RoleId { get; set; }
         public Role? Roles { get; set; }
     }
 }
