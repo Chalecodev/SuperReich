@@ -2,6 +2,7 @@
 using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Domain.Entities.Users;
 using SuperReich.Domain.ValueObjects;
+using static SuperReich.Application.Helper.Encryptor;
 
 namespace SuperReich.Application.Features.Users.Commands.CreateUser
 {
@@ -21,13 +22,11 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
                 Passport = request.Passport,
                 Surnames = request.Surnames,
                 Email = request.Email,
-                Password = request.Password,
+                Password = EncryptPassword(request.Password),
                 PhoneNumber = request.PhoneNumber,
                 Birthdate = _dateTimeChile.GetSpecificChileTime(request.Birthdate),
                 Address = request.Address,
                 RoleId = request.RoleId,
-                CreatedBy = "Chaleco",
-                LastModifiedBy = null,
                 IsDeleted = request.IsDeleted
             };
 

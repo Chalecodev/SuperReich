@@ -6,7 +6,7 @@ using SuperReich.Application.Features.Auth.Commands;
 using SuperReich.Domain.Entities.Users;
 using SuperReich.Infrastructure.Persistence;
 using SuperReich.Infrastructure.Services;
-using static SuperReich.Infrastructure.Services.Encryptor;
+using static SuperReich.Application.Helper.Encryptor;
 
 namespace SuperReich.Infrastructure.Repositories
 {
@@ -24,7 +24,7 @@ namespace SuperReich.Infrastructure.Repositories
             if (user == null || !VerifyPassword(request.Password!, user.Password!))
                 throw new Exception("El usuario o la contraseña son incorrectos");
 
-            var token = await _jwtTokenService.GenerateToken(user);
+            var token = _jwtTokenService.GenerateToken(user);
 
             var response = new LoginResponse
             {

@@ -6,7 +6,7 @@ using SuperReich.Domain.Entities.RoomPrices;
 using SuperReich.Domain.Entities.Rooms;
 using SuperReich.Domain.Entities.Users;
 using SuperReich.Domain.ValueObjects;
-using static SuperReich.Infrastructure.Services.Encryptor;
+using static SuperReich.Application.Helper.Encryptor;
 
 namespace SuperReich.Infrastructure.Persistence;
 
@@ -43,18 +43,18 @@ public class DbInitializer
             {
                 Rut = new RUT("20889157-K").Value,
                 Passport = "xxxxx",
-                Names = "xxxxx xxxxx",
+                Names = "Israel Cabrera",
                 Surnames = "xxxxx xxxxx",
-                Email = "xxxxx.xxxxx@xxx.com",
+                Email = "chaleco@gmail.com",
                 Password = EncryptPassword("1234"),
                 Birthdate = DateTime.Parse("09-11-2001"),
                 Address = "xxxxxxxxxxxxxxx",
                 PhoneNumber = "+xxxxxxxxxx",
                 RoleId = 1,
-                CreatedBy = "Chaleco",
-                CreatedDate = DateTime.Now,
-                LastModifiedBy = null,
-                LastModifiedDate = null,
+                //CreatedBy = "Chaleco",
+                //CreatedDate = DateTime.Now,
+                //LastModifiedBy = null,
+                //LastModifiedDate = null,
                 IsDeleted = false
             });
         }

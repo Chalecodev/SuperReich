@@ -13,7 +13,7 @@ namespace SuperReich.Application.Features.Users.Queries.GetUsers
 
         public async Task<IReadOnlyList<UserDto>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
         {
-            var response = await _repository.GetAllAsync(includes: r => r.Roles!);
+            var response = await _repository.GetAllAsync(includes: u => u.Roles!);
             var users = response.Select(user => new UserDto
             {
                 UserId = user.UserId,
@@ -26,8 +26,9 @@ namespace SuperReich.Application.Features.Users.Queries.GetUsers
                 Birthdate = user.Birthdate,
                 Address = user.Address,
                 RoleName = user!.Roles != null ? user.Roles!.Rolename : string.Empty,
-                CreatedBy = "Chaleco",
-                LastModifiedBy = null,
+                CreatedDate = user.CreatedDate,
+                CreatedBy = user.CreatedBy,
+                LastModifiedBy = user.LastModifiedBy,
                 IsDeleted = false
             }).ToList();
 

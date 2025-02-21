@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace SuperReich.Infrastructure.Services
+namespace SuperReich.Application.Helper
 {
     public static class Encryptor
     {

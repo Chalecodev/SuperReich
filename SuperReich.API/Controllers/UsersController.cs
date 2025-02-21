@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuperReich.Application.Features.Users.Commands.CreateUser;
 using SuperReich.Application.Features.Users.Commands.UpdateUser;

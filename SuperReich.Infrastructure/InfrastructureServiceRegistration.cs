@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Infrastructure.Persistence;
 using SuperReich.Infrastructure.Repositories;
@@ -16,13 +18,15 @@ public static class InfrastructureServiceRegistration
         services.AddDbContext<Context>(options => options.UseSqlServer(con));
 
         services.AddSingleton<IDateTimeChile, DateTimeChile>();
-        //services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
         services.AddScoped<IAuthRepository, AuthRepository>();
         services.AddScoped<JwtTokenService>();
 
-        //services.Configure<EmailSettings>(c => configuration.GetSection("EmailSettings"));
-        //services.AddTransient<IEmailService, EmailService>();
+        services.AddHttpContextAccessor();
+        //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddScoped<ICurrentUserRepository, CurrentUserRepository>();
+
+        //services.AddScoped<JwtTokenService>();
 
         return services;
     }

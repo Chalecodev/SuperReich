@@ -8,7 +8,9 @@
 
   <ItemGroup>
     <Folder Include="Behaivours\" />
-    <Folder Include="Features\Bookings\" />
+    <Folder Include="Features\Bookings\Commands\DeleteBooking\" />
+    <Folder Include="Features\Bookings\Commands\UpdateBooking\" />
+    <Folder Include="Features\Bookings\Queries\" />
     <Folder Include="Features\Customers\Commands\DeleteCustomer\" />
     <Folder Include="Features\Customers\Commands\UpdateCustomer\" />
     <Folder Include="Features\RoomCategories\" />
@@ -16,7 +18,6 @@
     <Folder Include="Features\Rooms\Commands\DeleteRoom\" />
     <Folder Include="Features\Rooms\Commands\UpdateRoom\" />
     <Folder Include="Features\Users\Commands\DeleteUser\" />
-    <Folder Include="Helper\" />
   </ItemGroup>
 
   <ItemGroup>

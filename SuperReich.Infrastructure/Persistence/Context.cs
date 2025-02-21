@@ -15,16 +15,12 @@ namespace SuperReich.Infrastructure.Persistence
     public class Context : DbContext
     {
         private readonly IDateTimeChile _dateTimeChile;
-        public Context(DbContextOptions<Context> options, IDateTimeChile dateTime) : base(options)
+        private readonly ICurrentUserRepository _currentUserRepository;
+        public Context(DbContextOptions<Context> options, IDateTimeChile dateTime, ICurrentUserRepository currentUserRepository) : base(options)
         {
             _dateTimeChile = dateTime;
+            _currentUserRepository = currentUserRepository;
         }
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<User>().Ignore(u => u.Rut);  // Ignorar la propiedad Rut
-
-        //    base.OnModelCreating(modelBuilder);
-        //}
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -34,11 +30,11 @@ namespace SuperReich.Infrastructure.Persistence
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedDate = _dateTimeChile.GetCurrentChileTime();
-                        //entry.Entity.CreatedBy = "system";
+                        entry.Entity.CreatedBy = _currentUserRepository.Username ?? "system";
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModifiedDate = _dateTimeChile.GetCurrentChileTime();
-                        //entry.Entity.LastModifiedBy = "system";
+                        entry.Entity.LastModifiedBy = _currentUserRepository.Username ?? "system";
                         break;
                 }
             }
