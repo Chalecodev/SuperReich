@@ -3,6 +3,7 @@ using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Domain.Common;
 using SuperReich.Domain.Entities.Bookings;
 using SuperReich.Domain.Entities.Customers;
+using SuperReich.Domain.Entities.PaymentMethods;
 using SuperReich.Domain.Entities.Products;
 using SuperReich.Domain.Entities.Roles;
 using SuperReich.Domain.Entities.RoomCategories;
@@ -50,6 +51,7 @@ namespace SuperReich.Infrastructure.Persistence
         public DbSet<CategoryPrice> CategoryPrices { get; set; }
         public DbSet<RoomCategory> RoomCategories { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<Booking> Bookings { get; set; }
     }
 }

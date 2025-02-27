@@ -5,15 +5,14 @@ using SuperReich.Application.DTOs.Auth.Login;
 using SuperReich.Application.Features.Auth.Commands;
 using SuperReich.Domain.Entities.Users;
 using SuperReich.Infrastructure.Persistence;
-using SuperReich.Infrastructure.Services;
 using static SuperReich.Application.Helper.Encryptor;
 
 namespace SuperReich.Infrastructure.Repositories
 {
-    public class AuthRepository(Context context, JwtTokenService jwtTokenService) : IAuthRepository
+    public class AuthRepository(Context context, IJwtHandlerRepository jwtHandlerRepository) : IAuthRepository
     {
         private readonly Context _context = context;
-        private readonly JwtTokenService _jwtTokenService = jwtTokenService;
+        private readonly IJwtHandlerRepository _jwtHandlerRepository = jwtHandlerRepository;
 
         public async Task<LoginResponse>? Login(LoginCommand request)
         {
@@ -24,7 +23,7 @@ namespace SuperReich.Infrastructure.Repositories
             if (user == null || !VerifyPassword(request.Password!, user.Password!))
                 throw new Exception("El usuario o la contraseña son incorrectos");
 
-            var token = _jwtTokenService.GenerateToken(user);
+            var token = _jwtHandlerRepository.GenerateToken(user);
 
             var response = new LoginResponse
             {

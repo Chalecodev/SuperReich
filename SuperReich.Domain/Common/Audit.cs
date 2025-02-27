@@ -6,6 +6,6 @@
         public string? CreatedBy { get; set; }
         public DateTime? LastModifiedDate { get; set; }
         public string? LastModifiedBy { get; set; }
-        public bool? IsDeleted { get; set; } = false;
+        public bool? IsActivated { get; set; } = true;
     }
 }

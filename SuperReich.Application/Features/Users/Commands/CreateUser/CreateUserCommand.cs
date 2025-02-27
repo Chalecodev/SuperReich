@@ -14,6 +14,5 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
         public DateTime Birthdate { get; set; }
         public string Address { get; set; } = string.Empty;
         public int RoleId { get; set; }
-        public bool IsDeleted { get; set; }
     }
 }

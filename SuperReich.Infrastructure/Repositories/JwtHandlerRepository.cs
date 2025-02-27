@@ -1,13 +1,14 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
+using SuperReich.Application.Contracts.Persistence;
 using SuperReich.Domain.Entities.Users;
+using Microsoft.Extensions.Configuration;
 
-namespace SuperReich.Infrastructure.Services
+namespace SuperReich.Infrastructure.Repositories
 {
-    public class JwtTokenService(IConfiguration configuration)
+    public class JwtHandlerRepository(IConfiguration configuration) : IJwtHandlerRepository
     {
         private readonly IConfiguration _configuration = configuration;
 

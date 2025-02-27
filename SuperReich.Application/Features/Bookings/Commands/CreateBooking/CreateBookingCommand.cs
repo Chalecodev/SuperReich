@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace SuperReich.Application.Features.Bookings.Commands.CreateBooking
 {
-    class CreateBookingCommand
+    public class CreateBookingCommand : IRequest<int>
     {
+        public string? Notes { get; set; }
+        public int PaymentMethodId { get; set; }
+        public int CustomerId { get; set; }
+        public int RoomId { get; set; }
     }
 }

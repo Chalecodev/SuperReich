@@ -27,7 +27,8 @@ namespace SuperReich.Infrastructure.Repositories
 
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
-            return await _context.Set<T>().ToListAsync();
+            var response = await _context.Set<T>().ToListAsync();
+            return response;
         }
 
         public async Task<IReadOnlyList<T>> GetAllAsync(params Expression<Func<T, object>>[] includes)

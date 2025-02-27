@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SuperReich.Domain.Entities.Bookings;
 using SuperReich.Domain.Entities.Customers;
+using SuperReich.Domain.Entities.PaymentMethods;
 using SuperReich.Domain.Entities.Roles;
 using SuperReich.Domain.Entities.RoomCategories;
 using SuperReich.Domain.Entities.RoomPrices;
@@ -37,8 +39,6 @@ public class DbInitializer
 
         if (!await context.Users.AnyAsync())
         {
-            //DateTime.Parse("09-11-2001")
-            //_dateTimeChile.GetSpecificChileTime(new DateTime(2001, 11, 09)), // YYYY/MM/DD
             await context.Users.AddAsync(new User()
             {
                 Rut = new RUT("20889157-K").Value,
@@ -50,12 +50,7 @@ public class DbInitializer
                 Birthdate = DateTime.Parse("09-11-2001"),
                 Address = "xxxxxxxxxxxxxxx",
                 PhoneNumber = "+xxxxxxxxxx",
-                RoleId = 1,
-                //CreatedBy = "Chaleco",
-                //CreatedDate = DateTime.Now,
-                //LastModifiedBy = null,
-                //LastModifiedDate = null,
-                IsDeleted = false
+                RoleId = 1
             });
         }
 
@@ -66,12 +61,7 @@ public class DbInitializer
             {
                 Price = 20000,
                 PriceType = "Base",
-                Season = "Verano",
-                CreatedBy = "Chaleco",
-                CreatedDate = DateTime.Now,
-                LastModifiedBy = null,
-                LastModifiedDate = null,
-                IsDeleted = false
+                Season = "Verano"
             });
         }
 
@@ -81,11 +71,7 @@ public class DbInitializer
             {
                 Description = "Matrimonial",
                 CategoryPriceId = 1,
-                CreatedBy = "Chaleco",
-                CreatedDate = DateTime.Now,
-                LastModifiedBy = null,
-                LastModifiedDate = null,
-                IsDeleted = false
+                CreatedBy = "Chaleco"
             });
         }
 
@@ -97,12 +83,7 @@ public class DbInitializer
                 Capacity = 4,
                 NumberRoom = 1,
                 RoomCategoryId = 1,
-                Status = "Disponible",
-                CreatedBy = "Chaleco",
-                CreatedDate = DateTime.Now,
-                LastModifiedBy = null,
-                LastModifiedDate = null,
-                IsDeleted = false
+                Status = "Disponible"
             });
         }
 
@@ -115,20 +96,39 @@ public class DbInitializer
                 Names = "xxxxx xxxxx",
                 Surnames = "xxxxx xxxxx",
                 Email = "",
-                Nacionalidad = "Chilena",
+                Nationality = "Chilena",
                 PhoneNumber = "+xxxxxxxxxx",
                 Birthdate = DateTime.Parse("09-11-2001"),
                 Address = "xxxxxxxxxxxxxxx",
                 Note = "xxxxxxxxxxxxxxx",
-                BlackList = false,
-                CreatedBy = "Chaleco",
-                CreatedDate = DateTime.Now,
-                LastModifiedBy = null,
-                LastModifiedDate = null,
-                IsDeleted = false
+                BlackList = false
             });
 
             await context.SaveChangesAsync();
         }
+
+
+        if (!await context.PaymentMethods.AnyAsync())
+        {
+            await context.PaymentMethods.AddAsync(new PaymentMethod()
+            {
+                PaymentMethodName = "Efectivo"
+            });
+
+            await context.SaveChangesAsync();
+        }
+
+        if (!await context.Bookings.AnyAsync())
+        {
+            await context.Bookings.AddAsync(new Booking()
+            {
+                Notes = "XXXXXXXXXXXXXXXX",
+                CustomerId = 1,
+                PaymentMethodId = 1,
+                RoomId = 1
+            });
+        }
+
+        await context.SaveChangesAsync();
     }
 }

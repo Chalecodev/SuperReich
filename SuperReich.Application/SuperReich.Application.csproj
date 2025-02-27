@@ -8,13 +8,17 @@
 
   <ItemGroup>
     <Folder Include="Behaivours\" />
+    <Folder Include="DTOs\Bookings\" />
     <Folder Include="Features\Bookings\Commands\DeleteBooking\" />
     <Folder Include="Features\Bookings\Commands\UpdateBooking\" />
-    <Folder Include="Features\Bookings\Queries\" />
+    <Folder Include="Features\CategoryPrices\Commands\DeleteCategoryPrice\" />
+    <Folder Include="Features\CategoryPrices\Commands\UpdateCategoryPrice\" />
+    <Folder Include="Features\CategoryPrices\Queries\" />
     <Folder Include="Features\Customers\Commands\DeleteCustomer\" />
     <Folder Include="Features\Customers\Commands\UpdateCustomer\" />
-    <Folder Include="Features\RoomCategories\" />
-    <Folder Include="Features\CategoryPrices\" />
+    <Folder Include="Features\RoomCategories\Commands\CreateRoomCategory\" />
+    <Folder Include="Features\RoomCategories\Commands\DeleteRoomCategory\" />
+    <Folder Include="Features\RoomCategories\Commands\UpdateRoomCategory\" />
     <Folder Include="Features\Rooms\Commands\DeleteRoom\" />
     <Folder Include="Features\Rooms\Commands\UpdateRoom\" />
     <Folder Include="Features\Users\Commands\DeleteUser\" />
@@ -25,6 +29,7 @@
     <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
   </ItemGroup>
 
   <ItemGroup>

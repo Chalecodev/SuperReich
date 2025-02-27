@@ -10,6 +10,27 @@ namespace SuperReich.Application.Features.Customers.Queries.GetCustomers
         public async Task<IReadOnlyList<Customer>> Handle(GetCustomersQuery request, CancellationToken cancellationToken)
         {
             var response = await _repository.GetAllAsync();
+            var customers = response.Select(customer => new Customer
+            {
+                CustomerId = customer.CustomerId,
+                Rut = customer.Rut,
+                Passport = customer.Passport,
+                Names = customer.Names,
+                Surnames = customer.Surnames,
+                Email = customer.Email,
+                Nationality = customer.Nationality,
+                PhoneNumber = customer.PhoneNumber,
+                Birthdate = customer.Birthdate,
+                Address = customer.Address,
+                Note = customer.Note,
+                BlackList = customer.BlackList,
+                CreatedBy = customer.CreatedBy,
+                CreatedDate = customer.CreatedDate,
+                LastModifiedBy = customer.LastModifiedBy,
+                LastModifiedDate = customer.LastModifiedDate,
+                IsActivated = customer.IsActivated
+            }).ToList();
+
             return response;
         }
     }

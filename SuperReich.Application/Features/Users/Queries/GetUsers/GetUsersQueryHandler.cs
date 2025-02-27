@@ -29,7 +29,7 @@ namespace SuperReich.Application.Features.Users.Queries.GetUsers
                 CreatedDate = user.CreatedDate,
                 CreatedBy = user.CreatedBy,
                 LastModifiedBy = user.LastModifiedBy,
-                IsDeleted = false
+                IsActivated = user.IsActivated
             }).ToList();
 
             return _mapper.Map<IReadOnlyList<UserDto>>(users);

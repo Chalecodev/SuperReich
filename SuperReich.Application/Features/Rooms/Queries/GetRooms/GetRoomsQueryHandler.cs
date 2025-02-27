@@ -22,9 +22,11 @@ namespace SuperReich.Application.Features.Rooms.Queries.GetRooms
                 NumberRoom = room.NumberRoom,
                 Status = room.Status,
                 RoomCategoryName = room.RoomCategories != null ? room.RoomCategories.Description : string.Empty,
-                CreatedBy = "Chaleco",
-                LastModifiedBy = null,
-                IsDeleted = false
+                CreatedBy = room.CreatedBy,
+                CreatedDate = room.CreatedDate,
+                LastModifiedBy = room.LastModifiedBy,
+                LastModifiedDate = room.LastModifiedDate,
+                IsActivated = room.IsActivated
             }).ToList();
 
             return _mapper.Map<IReadOnlyList<RoomDto>>(rooms);

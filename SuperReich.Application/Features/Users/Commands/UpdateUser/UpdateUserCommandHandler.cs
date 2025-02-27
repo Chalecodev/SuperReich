@@ -23,7 +23,7 @@ namespace SuperReich.Application.Features.Users.Commands.UpdateUser
             updatedUser.Birthdate = request.Birthdate != null ? _dateTimeChile.GetSpecificChileTime(request.Birthdate) : updatedUser.Birthdate;
             updatedUser.Address = request.Address ?? updatedUser.Address;
             updatedUser.RoleId = request.RoleId != null ? request.RoleId : updatedUser.RoleId;
-            updatedUser.IsDeleted = request.IsDeleted;
+            updatedUser.IsActivated = request.IsActivated;
 
             await _repository.UpdateAsync(updatedUser);
 

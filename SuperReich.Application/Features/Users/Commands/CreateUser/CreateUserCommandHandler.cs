@@ -13,8 +13,6 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
 
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            //DateTime.Parse("09-11-2001")
-            //_dateTimeChile.GetSpecificChileTime(new DateTime(2001, 11, 09)), // YYYY/MM/DD
             var user = new User
             {
                 Rut = new RUT(request.Rut).Value,
@@ -27,7 +25,6 @@ namespace SuperReich.Application.Features.Users.Commands.CreateUser
                 Birthdate = _dateTimeChile.GetSpecificChileTime(request.Birthdate),
                 Address = request.Address,
                 RoleId = request.RoleId,
-                IsDeleted = request.IsDeleted
             };
 
             var response = await _repository.AddAsync(user);

@@ -17,9 +17,6 @@ namespace SuperReich.Application.Features.Rooms.Commands.CreateRoom
                 Status = request.Status,
                 NumberRoom = request.NumberRoom,
                 RoomCategoryId = request.RoomCategoryId,
-                CreatedBy = "Chaleco",
-                LastModifiedBy = null,
-                IsDeleted = false
             };
 
             var result = await _repository.AddAsync(room);

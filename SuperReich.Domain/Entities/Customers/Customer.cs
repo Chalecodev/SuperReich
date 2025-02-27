@@ -9,10 +9,10 @@ namespace SuperReich.Domain.Entities.Customers
         public int CustomerId { get; set; }
         public string? Rut { get; set; }
         public string? Passport { get; set; }
-        public string? Names { get; set; } = string.Empty;
-        public string? Surnames { get; set; }
+        public string Names { get; set; } = string.Empty;
+        public string Surnames { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string Nacionalidad { get; set; } = string.Empty;
+        public string Nationality { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public DateTime? Birthdate { get; set; }
         public string? Address { get; set; } = string.Empty;
